@@ -1,0 +1,30 @@
+img#logo{height:40px}
+/* LAYOUT
+*********************************/
+
+
+/* FORMS
+*********************************/
+/* SEARCH */
+.search:focus{ color: #555; }
+/* GENERAL */
+.form-control{ color: #555; }
+/* email */
+.compose-mail select, .compose-mail select:focus { border: none; padding: 0; width: 80%; float: left;}
+
+/* DEBUG
+*********************************/
+pre { text-rendering: initial !important; tab-size: 3; }
+
+/* PROFILE
+*******************************/
+.profile-information .profile-desk{ border: 0; }
+.profile-information .profile-statistics { padding-left: 20px; border-left: 1px solid #ddd;}
+
+/* INVOICE
+*******************************/
+.invoice-title h1  { padding: 12px; }
+
+/* CHAT MESSAGES VIEW ELEMENTS
+*******************************/
+.msg-in a, .msg-in a:hover { color: white; }
