@@ -41,7 +41,23 @@
         HIDE_MODAL                  : 'HIDE_MODAL',
         EMPTY_MODAL                 : 'EMPTY_MODAL',
         SET_MODAL_BOY               : 'SET_MODAL_BOY',
-        SHOW_FILES                  : 'SHOW_FILES'
+        SHOW_FILES                  : 'SHOW_FILES',
+        COPY_LINK                   : 'COPY_LINK'
+    };
+
+    /* Copy link
+     *******************************************/
+    function CopyLink( note )
+    {
+        better.AbstractCommand.call(this, note );
+    };
+
+    CopyLink.prototype = new better.AbstractCommand;
+    CopyLink.prototype.constructor = ShowFiles;
+
+    CopyLink.prototype.execute = function( notification )
+    {
+        window.prompt("Copy to clipboard: Ctrl+C, Enter", notification.body.link);
     };
 
     /* ShowFiles
@@ -272,6 +288,7 @@
         this.registerCommand( Notification.LOAD_AJAX, LoadAjax );
         this.registerCommand( Notification.SET_MODAL, SetModal );
         this.registerCommand( Notification.SHOW_FILES, ShowFiles );
+        this.registerCommand( Notification.COPY_LINK, CopyLink );
     };
 
     AttachmentIndex.prototype.initProcesses = function(configObject)

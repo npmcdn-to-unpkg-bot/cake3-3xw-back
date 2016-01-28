@@ -136,8 +136,7 @@ class AttachmentsController extends AppController
           $this->Flash->error('The attachment could not be saved. Please, try again.');
         }
       }
-      $atags = $this->Attachments->Atags->find('list', ['limit' => 200]);
-      $this->set(compact('attachment', 'atags'));
+      $this->set(compact('attachment'));
       $this->set('_serialize', ['attachment']);
     }
 

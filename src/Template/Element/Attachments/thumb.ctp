@@ -55,5 +55,9 @@
   <?php echo $this->Html->link('<span class="glyphicon glyphicon-pencil"></span>', array('action' => 'edit', $attachment->id), array('class' => 'btn btn-primary', 'escape' => false)); ?>
   <?php echo ( $attachment->type != 'embed' ) ? $this->Html->link('<span class="glyphicon glyphicon-arrow-down"></span>', array('action' => 'download', $attachment->id), array('class' => 'btn btn-primary', 'escape' => false)) : ''; ?>
   <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-trash"></span>', array('action' => 'delete', $attachment->id), array('class' => 'btn btn-danger', 'escape' => false), __('Are you sure you want to delete the Attachment: %s?', $attachment->name)); ?>
+  <?php
+  $link = ($attachment->type == 'embed')? $attachment->embed : $this->Url->build('/') . $attachment->path;
+  echo '<button type="button" onclick="window.attachmentIndex.goTo(\'COPY_LINK\',{ link: \''.h($link).'\' });" class="btn btn-primary"><span class="glyphicon glyphicon-link"></span></button>';
+  ?>
 </div>
 </div>
