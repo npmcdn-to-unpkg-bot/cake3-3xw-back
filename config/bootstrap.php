@@ -202,8 +202,6 @@ DispatcherFactory::add('ControllerFactory');
 Type::build('date')->useLocaleParser();
 Type::build('datetime')->useLocaleParser();
 
-Plugin::load('DoubleV', ['autoload' => true]);
-
 /* STORAGE
  * ******************************* */
 require_once('storage.php');

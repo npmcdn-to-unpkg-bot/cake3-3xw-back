@@ -1,27 +1,21 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $atag->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $atag->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Atags'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Attachments'), ['controller' => 'Attachments', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Attachment'), ['controller' => 'Attachments', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="atags form large-9 medium-8 columns content">
-    <?= $this->Form->create($atag) ?>
-    <fieldset>
-        <legend><?= __('Edit Atag') ?></legend>
-        <?php
-            echo $this->Form->input('name');
-            echo $this->Form->input('slug');
-            echo $this->Form->input('attachments._ids', ['options' => $attachments]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>
+<section class="panel">
+  <header class="panel-heading">
+    <?= __('Edit Atag') ?>
+  </header>
+  <div class="panel-body">
+    <div class="position-center">
+      <?= $this->Form->create($atag); ?>
+      <?php
+                  echo $this->Form->input('name', array('class' => 'form-control'));
+                        echo $this->Form->input('slug', array('class' => 'form-control'));
+                      echo $this->Form->input('attachments._ids', ['options' => $attachments, 'class' => 'form-control']);
+                ?>
+      <hr>
+      <div class="btn-group">
+        <?= $this->Html->link(__('Cancel'), $referer, ['class' => 'btn btn-danger']) ?>
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
+      </div>
+      <?= $this->Form->end() ?>
+    </div>
+  </div>
+</section>
