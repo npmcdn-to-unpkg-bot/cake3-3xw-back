@@ -49,7 +49,7 @@ pre { text-rendering: initial !important; tab-size: 3; }
 
 /* Atags
 *************************************/
-.tag{ font-size: 13px; }
+.tag{ font-size: 13px; line-height: 2.4; }
 
 /* Attachment
 *************************************/

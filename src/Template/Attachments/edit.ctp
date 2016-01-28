@@ -1,3 +1,17 @@
+<?php
+use Cake\Core\Configure;
+
+$this->Html->script([
+  'angular/angular.1.2.20.min.js',
+  'tags/core.min.js',
+  'attachment/edit.min.js'
+], [
+  'block' =>'script'
+]);
+?>
+<script type="text/javascript">
+  var tags = <?= json_encode($attachment['atags']) ?>;
+</script>
 <section class="panel">
   <header class="panel-heading">
     <?= __('Edit Attachment') ?>
@@ -7,7 +21,7 @@
       <?= $this->Form->create($attachment); ?>
       <div class="row">
         <div class="col-md-6">
-          <label for="embed"><?= __('Attachment') ?></label>
+          <label ><?= __('Attachment') ?></label>
           <?php
           switch ($attachment->subtype) {
             case 'jpg':
@@ -32,6 +46,14 @@
               break;
             }
           ?>
+          <label for="atags"><?= __('Tags') ?></label>
+          <p>
+            <!-- <input type="hidden" name="atags[]" value="" > -->
+            <select multiple name="atags[][name]" id="tagsinput" ></select>
+          </p>
+          <p>
+            <small>Enter tag name and hit enter.</small>
+          </p>
         </div>
         <div class="col-md-6">
           <?php

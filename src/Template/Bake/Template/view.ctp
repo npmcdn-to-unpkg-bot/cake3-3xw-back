@@ -114,7 +114,7 @@ $otherPluralHumanName = Inflector::humanize($details['controller']);
   </header>
   <div class="panel-body">
     <?php if (!empty($<%= $singularVar %>-><%= $details['property'] %>)): ?>
-      <table cellpadding="0" cellspacing="0" class='table general-table'>
+      <table cellpadding="0" cellspacing="0" class='table table-hover general-table'>
         <tr>
           <% foreach ($details['fields'] as $field): %>
           <th><?= __('<%= Inflector::humanize($field) %>') ?></th>
