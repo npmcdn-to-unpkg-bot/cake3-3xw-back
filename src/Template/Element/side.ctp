@@ -2,7 +2,7 @@
 /* BACKEND MENU
  * ******************************* */
 $menu = array(
-    '<i class="fa fa-dashboard"></i><span>'.__('Dashboard').'</span>' => array('controller' => 'dashboard', 'action' => 'index'),
+    '<i class="fa fa-dashboard"></i><span>'.__('Dashboard').'</span>' => array('controller' => 'pages', 'action' => 'display','home'),
     '<i class="fa fa-file-video-o"></i><span>'.__('Attachments').'</span>' => array('controller' => 'attachments', 'action' => 'index'),
     '<i class="fa fa-users"></i><span>'.__('Users').'</span>' => array(
         'dropdown' => array(
