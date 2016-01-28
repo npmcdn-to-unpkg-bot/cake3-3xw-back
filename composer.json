@@ -1,6 +1,7 @@
 {
     "name": "awallef/cake3-3xw-back",
     "description": "CakePHP 3 skeleton backend app",
+    "minimum-stability": "dev",
     "homepage": "http://3xw.ch",
     "type": "project",
     "license": "MIT",
