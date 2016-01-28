@@ -14,7 +14,7 @@ The framework source code can be found here: [cakephp/cakephp](https://github.co
 
 If Composer is installed globally, run
 ```bash
-composer create-project --prefer-dist awallef/cake3-3xw-back [app_name]
+composer create-project --prefer-dist awallef/cake3-3xw-back [app_name] -s"dev"
 ```
 
 You should now be able to visit the path to where you installed the app and see
