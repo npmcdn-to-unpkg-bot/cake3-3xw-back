@@ -103,7 +103,9 @@ class Installer
             'tmp/cache/persistent',
             'tmp/cache/views',
             'tmp/sessions',
-            'tmp/tests'
+            'tmp/tests',
+            'webroot/imagecache',
+            'webroot/files'
         ];
 
         foreach ($paths as $path) {
@@ -160,6 +162,8 @@ class Installer
         $walker($dir . '/tmp', $worldWritable, $io);
         $changePerms($dir . '/tmp', $worldWritable, $io);
         $changePerms($dir . '/logs', $worldWritable, $io);
+        $changePerms($dir . '/webroot/imagecache', $worldWritable, $io);
+        $changePerms($dir . '/webroot/files', $worldWritable, $io);
     }
 
     /**
