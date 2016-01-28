@@ -23,8 +23,8 @@
       <div class="btn-group">
         <?= $this->Html->link(__('Cancel'), $referer, ['class' => 'btn btn-danger']) ?>
         <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
-        <?= $this->Form->end() ?>
       </div>
+      <?= $this->Form->end() ?>
     </div>
   </div>
 </section>
