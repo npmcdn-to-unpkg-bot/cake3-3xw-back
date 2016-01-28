@@ -3,7 +3,12 @@
  * ******************************* */
 $menu = array(
     '<i class="fa fa-dashboard"></i><span>'.__('Dashboard').'</span>' => array('controller' => 'pages', 'action' => 'display','home'),
-    '<i class="fa fa-file-video-o"></i><span>'.__('Attachments').'</span>' => array('controller' => 'attachments', 'action' => 'index'),
+    '<i class="fa fa-file-video-o"></i><span>'.__('Attachments').'</span>' => array(
+        'dropdown' => array(
+          __('List') => array('controller' => 'attachments', 'action' => 'index'),
+          __('Tags') => array('controller' => 'atags', 'action' => 'index'),
+        )
+    ),
     '<i class="fa fa-users"></i><span>'.__('Users').'</span>' => array(
         'dropdown' => array(
           __('Users') => array('controller' => 'users', 'action' => 'index'),

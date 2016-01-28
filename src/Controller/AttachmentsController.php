@@ -128,6 +128,7 @@ class AttachmentsController extends AppController
         'contain' => ['Atags']
       ]);
       if ($this->request->is(['patch', 'post', 'put'])) {
+        //debug($this->request->data);
         $attachment = $this->Attachments->patchEntity($attachment, $this->request->data);
         if ($this->Attachments->save($attachment)) {
           $this->Flash->success('The attachment has been saved.');
@@ -135,6 +136,7 @@ class AttachmentsController extends AppController
         } else {
           $this->Flash->error('The attachment could not be saved. Please, try again.');
         }
+        
       }
       $this->set(compact('attachment'));
       $this->set('_serialize', ['attachment']);

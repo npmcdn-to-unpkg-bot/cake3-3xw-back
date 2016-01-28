@@ -55,6 +55,9 @@ module.exports = function (grunt) {
                   ],
                   '../webroot/js/attachment/index.min.js': [
                     'js/attachment/attachment-index.js',
+                  ],
+                  '../webroot/js/attachment/edit.min.js': [
+                    'js/attachment/attachment-edit.js',
                   ]
                 }
             },
@@ -80,6 +83,9 @@ module.exports = function (grunt) {
                   ],
                   '../webroot/js/attachment/index.min.js': [
                     'js/attachment/attachment-index.js',
+                  ],
+                  '../webroot/js/attachment/edit.min.js': [
+                    'js/attachment/attachment-edit.js',
                   ]
                 }
             },
