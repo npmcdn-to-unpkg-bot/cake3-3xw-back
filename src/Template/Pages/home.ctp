@@ -11,28 +11,8 @@ endif;
 
 ?>
 <div class="row">
-  
-  <?php Debugger::checkSecurityKeys(); ?>
 
-  <!-- Url Rewriting -->
-  <div class="col-md-12">
-    <div class="panel">
-      <div class="panel-heading">
-        <h3 class="panel-title">Url Rewriting</h3>
-      </div>
-      <div class="panel-body">
-        <div id="url-rewriting-warning" class="col-md-12">
-            <p class="alert alert-danger">URL rewriting is not properly configured on your server.</p>
-            <p class="alert alert-warning">
-                1) <a target="_blank" href="http://book.cakephp.org/3.0/en/installation.html#url-rewriting">Help me configure it</a>
-            </p>
-            <p class="alert alert-warning">
-                2) <a target="_blank" href="http://book.cakephp.org/3.0/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
-            </p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <?php Debugger::checkSecurityKeys(); ?>
 
   <!-- PHP checks -->
   <div class="col-md-6">
