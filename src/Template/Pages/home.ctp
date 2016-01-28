@@ -4,8 +4,15 @@ use Cake\Core\Configure;
 use Cake\Datasource\ConnectionManager;
 use Cake\Error\Debugger;
 use Cake\Network\Exception\NotFoundException;
+
+if (!Configure::read('debug')):
+    throw new NotFoundException();
+endif;
+
 ?>
 <div class="row">
+  
+  <?php Debugger::checkSecurityKeys(); ?>
 
   <!-- Url Rewriting -->
   <div class="col-md-12">
