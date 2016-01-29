@@ -9,6 +9,9 @@ img#logo{height:40px}
 .search:focus{ color: #555; }
 /* GENERAL */
 .form-control{ color: #555; }
+.checkbox input{ position:absolute;top:-14px;left:0;margin-left: 0 !important;}
+.checkbox label{padding-left: 25px;}
+
 /* email */
 .compose-mail select, .compose-mail select:focus { border: none; padding: 0; width: 80%; float: left;}
 
