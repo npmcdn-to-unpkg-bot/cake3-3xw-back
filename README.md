@@ -31,32 +31,32 @@ Avoid querying Attachments in your add and edit methods
 
 ### in add.ctp
 
-  echo $this->element('Attachments/add', array(
-      'settings' => array(
-          'relations' => 'belongsToMany', // or belongsTo
-          //'field' => 'attachment_id'  // if belongsTo
-          'maxsize' => 30, // 30MB
-          'types' => array(
-              'image/jpeg',
-              'image/png',
-              'application/pdf'
-          )
-      ),
-      'attachments' => []
-  ));
+  	echo $this->element('Attachments/add', array(
+      	'settings' => array(
+          	'relations' => 'belongsToMany', // or belongsTo
+          	//'field' => 'attachment_id'  // if belongsTo
+          	'maxsize' => 30, // 30MB
+          	'types' => array(
+              	'image/jpeg',
+              	'image/png',
+              	'application/pdf'
+          	)
+      	),
+      	'attachments' => []
+  	));
 
 ### in edit.ctp
 
-  echo $this->element('Attachments/add', array(
-      'settings' => array(
-          'relations' => 'belongsToMany', // or belongsTo
-          //'field' => 'attachment_id'  // if belongsTo
-          'maxsize' => 30, // 30MB
-          'types' => array(
-              'image/jpeg',
-              'image/png',
-              'application/pdf'
-          )
-      ),
-      'attachments' => $corresondence['attachments']
-  ));
+  	echo $this->element('Attachments/add', array(
+      	'settings' => array(
+          	'relations' => 'belongsToMany', // or belongsTo
+          	//'field' => 'attachment_id'  // if belongsTo
+          	'maxsize' => 30, // 30MB
+          	'types' => array(
+              	'image/jpeg',
+              	'image/png',
+              	'application/pdf'
+          	)
+      	),
+      	'attachments' => $corresondence['attachments']
+  	));
