@@ -27,7 +27,8 @@ module.exports = function (grunt) {
                         'theme_assets/css/style.css',
                         'theme_assets/css/style-responsive.css',
                         'css/tags/bootstrap-tagsinput.css',
-                        'theme_assets/js/bootstrap-wysihtml5/wysiwyg-color.css'
+                        'theme_assets/js/bootstrap-wysihtml5/wysiwyg-color.css',
+                        'theme_assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.css',
                     ]
                 }
             }
@@ -101,6 +102,7 @@ module.exports = function (grunt) {
                         'theme_assets/js/jquery.scrollTo.min.js',
                         'theme_assets/js/jquery.nicescroll.js',
                         'theme_assets/js/scripts.js',
+                        'theme_assets/js/bootstrap-wysihtml5/wysihtml5-0.3.0.js',
                         'theme_assets/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js'
                     ],
                     '../webroot/js/angular/angular.1.2.20.min.js': [
