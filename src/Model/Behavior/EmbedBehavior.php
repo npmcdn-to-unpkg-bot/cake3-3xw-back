@@ -83,7 +83,7 @@ class EmbedBehavior extends Behavior
         {
           $imgid = $matches[1];
           $http = new Client();
-          $hash = unserialize( $http->get('http://vimeo.com/api/v2/video/' . $imgid . '.php') );
+          $hash = unserialize( $http->get('http://vimeo.com/api/v2/video/' . $imgid . '.php')->body );
           $data[$file_field] = $hash[0]['thumbnail_medium'];
         }
       }
