@@ -24,3 +24,39 @@ the setup traffic lights.
 
 Read and edit `config/app.php` and setup the 'Datasources' and any other
 configuration relevant for your application.
+
+## Attachments
+### In controllers
+Avoid querying Attachments in your add and edit methods
+
+### in add.ctp
+
+  	echo $this->element('Attachments/add', array(
+      	'settings' => array(
+          	'relations' => 'belongsToMany', // or belongsTo
+          	//'field' => 'attachment_id'  // if belongsTo
+          	'maxsize' => 30, // 30MB
+          	'types' => array(
+              	'image/jpeg',
+              	'image/png',
+              	'application/pdf'
+          	)
+      	),
+      	'attachments' => []
+  	));
+
+### in edit.ctp
+
+  	echo $this->element('Attachments/add', array(
+      	'settings' => array(
+          	'relations' => 'belongsToMany', // or belongsTo
+          	//'field' => 'attachment_id'  // if belongsTo
+          	'maxsize' => 30, // 30MB
+          	'types' => array(
+              	'image/jpeg',
+              	'image/png',
+              	'application/pdf'
+          	)
+      	),
+      	'attachments' => $corresondence['attachments']
+  	));
