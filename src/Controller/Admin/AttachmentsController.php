@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use Cake\Utility\Inflector;
 
@@ -136,7 +136,7 @@ class AttachmentsController extends AppController
         } else {
           $this->Flash->error('The attachment could not be saved. Please, try again.');
         }
-        
+
       }
       $this->set(compact('attachment'));
       $this->set('_serialize', ['attachment']);

@@ -13,7 +13,7 @@ $this->Html->script([
 
 <script>
     var attachment_add_settings = <?php echo json_encode($settings); ?>;
-    attachment_add_settings.site_url = "<?php echo $this->Url->build('/'); ?>";
+    attachment_add_settings.site_url = "<?php echo $this->Url->build('/admin/'); ?>";
     var attachments = [];
 </script>
 
