@@ -103,7 +103,6 @@ endif;
                ?>
                <?php if ($connected): ?>
                   <p class="alert alert-success">CakePHP is able to connect to the database.</p>
-
                <?php else: ?>
                   <p class="alert alert-warning">CakePHP is NOT able to connect to the database.<br /><br /><?= $errorMsg ?></p>
                <?php endif; ?>
