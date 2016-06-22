@@ -95,6 +95,9 @@ public function beforeRender(Event $event)
       $this->set('_serialize', true);
    }
    $this->set("referer", $this->referer());
+   if($this->request->is('ajax')){
+      $this->viewBuilder()->layout('ajax');
+   }
    $this->response->header('Access-Control-Allow-Origin', '*');
 
 }

@@ -13,7 +13,7 @@
          </header>
          <div class="panel-body">
             <div class="" style="position: relative;">
-               <input v-model="newtask" v-on:keyup.enter="addTodo" class="form-control">
+               <input v-model="newtask" v-on:keyup.enter="addTodo(<?=$connected['id']?>)" class="form-control">
                <br>
                <ul class="to-do-list ui-sortable" id="" >
                   <li class="clearfix" v-for="task in list.tasks" transition="fade" @click="finishTask(task)">
