@@ -3,6 +3,8 @@
  * ******************************* */
 $menu = array(
     '<i class="fa fa-dashboard"></i><span>'.__('Dashboard').'</span>' => array('controller' => 'dashboard', 'action' => 'index'),
+    '<i class="fa fa-pagelines"></i><span>'.__('Pages').'</span>' => array('controller' => 'pages', 'action' => 'index'),
+
     '<i class="fa fa-file-video-o"></i><span>'.__('Attachments').'</span>' => array(
         'dropdown' => array(
           __('List') => array('controller' => 'attachments', 'action' => 'index'),
@@ -13,6 +15,15 @@ $menu = array(
         'dropdown' => array(
           __('Users') => array('controller' => 'users', 'action' => 'index'),
           __('Roles') => array('controller' => 'roles', 'action' => 'index'),
+        )
+    ),
+    '<i class="fa fa-gears"></i><span>'.__('Parameters').'</span>' => array(
+        'dropdown' => array(
+          __('Block Types') => array('controller' => 'block_types', 'action' => 'index'),
+          __('Clear Cache') => array('controller' => 'dashboard', 'action' => 'clearCache'),
+          __('Website') => array('controller' => 'website', 'action' => 'view'),
+
+
         )
     ),
 );

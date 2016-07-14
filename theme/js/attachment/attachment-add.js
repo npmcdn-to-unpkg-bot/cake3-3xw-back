@@ -363,11 +363,11 @@
                 case 'jpeg':
                 case 'gif':
                 case 'png':
-                    $item.find('img').attr( 'src', settings.site_base_url + 'image.php?image='+ settings.site_base_url +'webroot/' + file.path + '&width=677&cropratio=16:9' );
+                    $item.find('img').attr( 'src', settings.site_url + 'image.php?image='+ settings.site_url +'webroot/' + file.path + '&width=677&cropratio=16:9' );
                     break;
                 case 'vimeo':
                 case 'youtube':
-                    $item.find('img').attr( 'src', settings.site_base_url + 'image.php?image='+ file.path + '&width=677&cropratio=16:9' );
+                    $item.find('img').attr( 'src', settings.site_url + 'image.php?image='+ file.path + '&width=677&cropratio=16:9' );
                     break;
 
                 default:
