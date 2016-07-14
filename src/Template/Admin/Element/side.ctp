@@ -3,7 +3,7 @@
  * ******************************* */
 $menu = array(
     '<i class="fa fa-dashboard"></i><span>'.__('Dashboard').'</span>' => array('controller' => 'dashboard', 'action' => 'index'),
-    '<i class="fa fa-pagelines"></i><span>'.__('Pages').'</span>' => array('controller' => 'pages', 'action' => 'index'),
+    '<i class="fa fa-file-text"></i><span>'.__('Pages').'</span>' => array('controller' => 'pages', 'action' => 'index'),
 
     '<i class="fa fa-file-video-o"></i><span>'.__('Attachments').'</span>' => array(
         'dropdown' => array(

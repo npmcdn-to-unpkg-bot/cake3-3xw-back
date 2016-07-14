@@ -13,7 +13,7 @@
    <?= $this->Html->meta('icon') ?>
    <!--Core CSS -->
    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-   <?php echo $this->Html->css(['bootstrap.min','font-awesome.min']);?>
+   <?php echo $this->Html->css(['bootstrap.min','font-awesome']);?>
    <!-- context css -->
    <?= $this->fetch('css'); ?>
 
