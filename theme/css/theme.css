@@ -1,4 +1,8 @@
 img#logo{height:40px}
+h1,h2,h3,h4,h5,h6{font-family: "Helvetica", swiss, sans-serif;font-weight: bold}
+.content_block{ margin:0.1em; border-radius: 3px}
+.select label{margin-right: 1em}
+.admin-block, .admin-block_img, .admin-block_text {background: white; padding: 0.4em, margin:1em}
 /* LAYOUT
 *********************************/
 

@@ -97,7 +97,7 @@ mb_internal_encoding(Configure::read('App.encoding'));
  * Set the default locale. This controls how dates, number and currency is
  * formatted and sets the default language to use for translations.
  */
-ini_set('intl.default_locale', 'fr_FR');
+ini_set('intl.default_locale', 'fr_CH');
 
 /**
  * Register application error and exception handlers.
@@ -205,3 +205,6 @@ Type::build('datetime')->useLocaleParser();
 /* STORAGE
  * ******************************* */
 require_once('storage.php');
+
+
+Configure::write('I18n.languages', ['fr_CH', 'en_GB', 'de_CH']);

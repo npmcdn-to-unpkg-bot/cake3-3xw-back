@@ -8,11 +8,12 @@
 
    <?= $this->fetch('meta') ?>
 
-   <title>3xW - <?= $this->fetch('title') ?></title>
+   <title><?=$website['name']?> - <?=$this->fetch('title') ?></title>
 
    <?= $this->Html->meta('icon') ?>
    <!--Core CSS -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+   <?php echo $this->Html->css(['bootstrap.min','font-awesome']);?>
    <!-- context css -->
    <?= $this->fetch('css'); ?>
 
@@ -23,23 +24,31 @@
    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
 </div>
 <![endif]-->
-<!--main content start-->
-<div id="main">
-   <div class="menu">
-      <?=$this->element('menu')?>
-   </div>
+<div class="wrapper">
+   <!--main content start-->
+   <?=$this->cell('Menu', array('website'=>$website))?>
+   <? //$this->cell('Slider')?>
+
    <div class="flash-message">
       <?= $this->Flash->render() ?>
       <?= $this->Flash->render('auth') ?>
    </div>
-   <div class="content">
+   <div class="container main">
       <?= $this->fetch('content') ?>
    </div>
+   <div class="footer">
+      <?=$this->element('footer')?>
+   </div>
 </div>
+
+
 <!--Core js-->
-<script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-<?= $this->Html->script([]) ?>
+<script src="https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js"></script>
+<script src="https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js"></script>
 <?= $this->fetch('script') ?>
+<?= $this->fetch('scriptBottom');?>
+<?= $this->element('googleAnalytics')?>
 </body>
 </html>

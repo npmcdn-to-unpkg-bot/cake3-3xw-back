@@ -20,9 +20,9 @@ Vue.component('tasks-component',{
       deleteProject: function(project){
          this.list.$remove(project);
       },
-      addTodo: function () {
+      addTodo: function (user_id) {
          var resource = this.$resource('tasks/add.json');
-         resource.save({name:this.newtask , user_id:1}).then((response) => {
+         resource.save({name:this.newtask , user_id:user_id}).then((response) => {
             // success callback
             this.newtask = '';
             this.fetchProjects();

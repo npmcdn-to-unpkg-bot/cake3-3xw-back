@@ -12,7 +12,8 @@ $this->Html->script([
 ?>
 <script>
     var attachment_add_settings = <?= json_encode(array_merge( Configure::read('Storage.settings'),$settings)) ?>;
-    attachment_add_settings.site_url = "<?= $this->Url->build('/') ?>";
+    attachment_add_settings.site_url = "<?= $this->Url->build('/'.$this->request->params['prefix'].'/') ?>";
+    attachment_add_settings.site_base_url = "<?= $this->Url->build('/') ?>";
     var attachments = <?= json_encode($attachments) ?>;
 </script>
 <br/>

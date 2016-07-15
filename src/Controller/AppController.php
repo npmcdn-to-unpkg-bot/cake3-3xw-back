@@ -16,6 +16,8 @@ namespace App\Controller;
 
 use Cake\Controller\Controller;
 use Cake\Event\Event;
+use Cake\I18n\I18n;
+
 
 /**
 * Application Controller
@@ -40,10 +42,9 @@ class AppController extends Controller
    public function initialize()
    {
       parent::initialize();
-
+      $this->session = $this->request->session();
       $this->loadComponent('RequestHandler');
       $this->loadComponent('Flash');
-
       $this->loadComponent('Auth',
       [
          'authenticate' => [
@@ -67,7 +68,6 @@ class AppController extends Controller
          'storage' => 'Session'
       ]
    );
-
 }
 
 public function beforeFilter(Event $event)
@@ -75,11 +75,31 @@ public function beforeFilter(Event $event)
    $this->Auth->allow(['display', 'login']);
    if (isset($this->request->params['prefix']) && $this->request->params['prefix'] == 'admin') {
       $this->set('connected', $this->Auth->user());
+      $this->session->write('Config.language', 'fr_CH');
+      I18n::locale('fr_CH');
+      $this->set('lang', 'fr_CH');
       $this->viewBuilder()->layout('admin');
    }else{
+      if ($this->session->check('Config.language')) {
+         I18n::locale($this->session->read('Config.language'));
+         $this->set('lang', $this->session->read('Config.language'));
+      }else{
+         $this->session->write('Config.language', 'fr_CH');
+         I18n::locale('fr_CH');
+         $this->set('lang', 'fr_CH');
+      }
       $this->viewBuilder()->layout('default');
    }
+
+
 }
+
+public function lang($lang)
+{
+   $this->session->write('Config.language', $lang);
+   $this->redirect($this->referer());
+}
+
 
 /**
 * Before render callback.
@@ -95,8 +115,12 @@ public function beforeRender(Event $event)
       $this->set('_serialize', true);
    }
    $this->set("referer", $this->referer());
+   if($this->request->is('ajax')){
+      $this->viewBuilder()->layout('ajax');
+   }
    $this->response->header('Access-Control-Allow-Origin', '*');
 
+   //$this->set('website');
 }
 
 
