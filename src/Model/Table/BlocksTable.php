@@ -6,6 +6,8 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use App\Model\Behavior\CustomTranslateTrait;
+
 
 
 
@@ -19,6 +21,7 @@ use Cake\Validation\Validator;
 class BlocksTable extends Table
 {
    use CacheTrait;
+   use CustomTranslateTrait;
 
     /**
      * Initialize method
@@ -29,6 +32,8 @@ class BlocksTable extends Table
     public function initialize(array $config)
     {
         parent::initialize($config);
+
+        $this->addBehavior('Translate', ['fields' => ['content']]);
 
         $this->table('blocks');
         $this->displayField('name');

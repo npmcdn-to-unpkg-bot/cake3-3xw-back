@@ -2,7 +2,6 @@
 namespace App\Controller\Admin;
 
 use App\Controller\AppController;
-use  Cake\Cache\Cache;
 /**
  * Pages Controller
  *
@@ -38,6 +37,8 @@ class PagesController extends AppController
         $page = $this->Pages->get($id, [
             'contain' => ['ParentPages', 'Blocks'=>['Attachments'], 'ChildPages']
         ]);
+
+
         $blockTypes = $this->BlockTypes->find('list', ['limit' => 200]);
         $this->set('page', $page);
         $this->set('blockTypes', $blockTypes);
@@ -76,7 +77,9 @@ class PagesController extends AppController
     public function edit($id = null)
     {
         $page = $this->Pages->get($id, [
-            'contain' => []
+            'contain' => [],
+            'finder' => 'translations'
+
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $page = $this->Pages->patchEntity($page, $this->request->data);

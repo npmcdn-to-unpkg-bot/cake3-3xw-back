@@ -2,6 +2,8 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\Behavior\Translate\TranslateTrait;
+
 
 /**
  * Block Entity.
@@ -20,6 +22,8 @@ use Cake\ORM\Entity;
  */
 class Block extends Entity
 {
+   use TranslateTrait;
+
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
      *

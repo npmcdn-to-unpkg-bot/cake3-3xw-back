@@ -11,7 +11,7 @@
          echo $this->Form->input('main_menu', array('class' => 'form-control'));
          echo $this->Form->input('right_menu', array('class' => 'form-control'));
          echo $this->Form->input('main_menu_order', array('class' => 'form-control'));
-         echo $this->Form->input('name', array('class' => 'form-control'));
+         echo $this->element('locale',['fields' => ['name']]);
          echo $this->Form->input('parent_id', ['options' => $parentPages, 'empty' => true]);
          ?>
          <hr>

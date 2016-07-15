@@ -37,6 +37,7 @@ class BlocksController extends AppController
       $block = $this->Blocks->get($id, [
          'contain' => ['BlockTypes', 'Pages', 'Attachments']
       ]);
+
       $this->set('block', $block);
       $this->set('_serialize', ['block']);
    }
@@ -101,7 +102,8 @@ class BlocksController extends AppController
    public function edit($id, $block_type_id, $page_id)
    {
       $block = $this->Blocks->get($id, [
-         'contain' => ['Attachments']
+         'contain' => ['Attachments'],
+         'finder' => 'translations'
       ]);
       if ($this->request->is(['patch', 'post', 'put'])) {
          $block = $this->Blocks->patchEntity($block, $this->request->data);

@@ -2,6 +2,8 @@
 namespace App\Model\Entity;
 
 use Cake\ORM\Entity;
+use Cake\ORM\Behavior\Translate\TranslateTrait;
+
 
 /**
  * Page Entity.
@@ -20,6 +22,7 @@ use Cake\ORM\Entity;
  */
 class Page extends Entity
 {
+   use TranslateTrait;
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -35,7 +38,4 @@ class Page extends Entity
         'id' => false,
     ];
 
-    public function afterSave(Event $event, Entity $entity, ArrayObject $options) {
-      debug($entity);
-   }
 }

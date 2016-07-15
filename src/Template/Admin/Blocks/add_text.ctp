@@ -7,7 +7,9 @@
          <?= $this->Form->create($block); ?>
          <?php
          echo $this->Form->input('name', array('class' => 'form-control'));
-         echo $this->Form->input('content', array('class' => 'form-control'));
+
+         echo $this->element('locale',['fields' => ['content']]);
+
          echo $this->Form->input('size', array('class' => 'form-control', 'type'=>'select', 'options'=>['col-sm-12'=>'FULL WIDTH', 'col-sm-6'=>'HALF WIDTH']));
          ?>
          <hr>
@@ -20,3 +22,4 @@
    </div>
 </section>
 <?=$this->element('tinymce')?>
+<?php debug($block)?>

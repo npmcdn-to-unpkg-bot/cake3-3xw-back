@@ -50,7 +50,6 @@ class PagesController extends AppController
       parent::beforeRender($event);
       $this->loadModel('Website');
       $website = $this->Website->find()->cache('website');
-
       $website = $this->Website->find()->cache('website_menu_name');
       if($website->isEmpty()){
          $website = array();
@@ -61,20 +60,20 @@ class PagesController extends AppController
       $this->set('website', $website);
    }
 
-
    public function view($slug)
    {
       $this->loadModel('BlockTypes');
       $page = $this->Pages->find('all',[
          'conditions'=>['Pages.slug'=>$slug, 'Pages.active'=>true],
          'contain'=>['Blocks'=>['Attachments']]
-      ])->cache($slug);
+      ])->cache($slug."-".$this->session->read('Config.language'));
       if($page->isEmpty()){
          $this->Flash->error(__("Cette page n'existe pas !"));
       }
       $this->set('page', $page->toArray());
-
    }
+
+
 
    public function homepage()
    {
@@ -82,7 +81,7 @@ class PagesController extends AppController
       $page = $this->Pages->find('all',[
          'conditions'=>['Pages.homepage'=>true],
          'contain'=>['Blocks'=>['Attachments']]
-      ])->cache('homepage');
+      ])->cache('homepage'."-".$this->session->read('Config.language'));
       $this->set('page', $page->toArray());
       $this->render('view');
 

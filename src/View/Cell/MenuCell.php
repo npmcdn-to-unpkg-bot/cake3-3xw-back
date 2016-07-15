@@ -24,6 +24,7 @@ class MenuCell extends Cell
    */
    public function display()
    {
+      $this->session = $this->request->session();
       $this->loadModel('Website');
       $this->loadModel('Pages');
       $pages = $this->Pages->find('all',[
@@ -34,7 +35,7 @@ class MenuCell extends Cell
          ],
          'contain' => ['ChildPages'],
          'order'=>['Pages.main_menu_order'=>'ASC']
-      ])->cache('menu');
+      ])->cache('menu'."-".$this->session->read('Config.language'));
 
       $right_menu = $this->Pages->find('all',[
          'conditions'=>[
@@ -44,7 +45,7 @@ class MenuCell extends Cell
          ],
          'contain' => ['ChildPages'],
          'order'=>['Pages.main_menu_order'=>'ASC']
-      ])->cache('right_menu');
+      ])->cache('right_menu'."-".$this->session->read('Config.language'));
 
       $website = $this->Website->find()->cache('website_menu_name');
       if($website->isEmpty()){

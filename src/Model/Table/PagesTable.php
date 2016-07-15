@@ -1,5 +1,6 @@
 <?php
 namespace App\Model\Table;
+
 use ArrayObject;
 use Cake\Utility\Inflector;
 
@@ -8,6 +9,9 @@ use Cake\ORM\Query;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use App\Model\Behavior\CustomTranslateTrait;
+use Cake\Event\Event;
+
 /**
 * Pages Model
 *
@@ -17,7 +21,8 @@ use Cake\Validation\Validator;
 */
 class PagesTable extends Table
 {
-
+   use CacheTrait;
+   use CustomTranslateTrait;
    /**
    * Initialize method
    *
@@ -33,6 +38,9 @@ class PagesTable extends Table
       $this->primaryKey('id');
 
       $this->addBehavior('Tree');
+
+      $this->addBehavior('Translate', ['fields' => ['name']]);
+
 
       $this->belongsTo('ParentPages', [
          'className' => 'Pages',
