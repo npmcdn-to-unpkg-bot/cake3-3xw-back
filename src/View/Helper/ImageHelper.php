@@ -8,7 +8,6 @@ class ImageHelper extends Helper
     public $helpers = ['Url'];
 
     public function image($params, $attributes = null ) {
-
         $src = $this->thumbSrc( $params );
         $html = '<img src="'. $src .'" ';
         $attributes = ( $attributes )? $attributes : array();
@@ -21,7 +20,7 @@ class ImageHelper extends Helper
 
     public function thumbSrc($params) {
         $start = substr($params['image'],0 , 4);
-        $params['image'] = ( $start == 'http' )? $params['image'] : $this->Url->build('/'). 'webroot/'. $params['image'];
+        $params['image'] = ( $start == 'http' )? $params['image'] : $params['image'];
         return $this->Url->build('/image.php').'?'. http_build_query($params);
     }
 }

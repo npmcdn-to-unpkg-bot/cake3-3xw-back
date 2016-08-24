@@ -107,7 +107,7 @@ if (!$image)
 }
 
 // Strip the possible trailing slash off the document root
-$docRoot	= preg_replace('/\/$/', '', DOCUMENT_ROOT);
+$docRoot	= preg_replace('/\/$/', '', CURRENT_DIR).'/';
 
 $start = substr($image, 0, 4);
 if ($start == 'http')

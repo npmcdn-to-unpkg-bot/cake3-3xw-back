@@ -13,6 +13,21 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
+// You can remove this if you are confident that your PHP version is sufficient.
+if (version_compare(PHP_VERSION, '5.5.9') < 0) {
+    trigger_error('You PHP version must be equal or higher than 5.5.9 to use CakePHP.', E_USER_ERROR);
+}
+
+// You can remove this if you are confident you have intl installed.
+if (!extension_loaded('intl')) {
+    trigger_error('You must enable the intl extension to use CakePHP.', E_USER_ERROR);
+}
+
+// You can remove this if you are confident you have mbstring installed.
+if (!extension_loaded('mbstring')) {
+    trigger_error('You must enable the mbstring extension to use CakePHP.', E_USER_ERROR);
+}
+
 /**
  * Configure paths required to find CakePHP + general filepath
  * constants
@@ -32,11 +47,6 @@ require ROOT . DS . 'vendor' . DS . 'autoload.php';
  * - Setting the default application paths.
  */
 require CORE_PATH . 'config' . DS . 'bootstrap.php';
-
-// You can remove this if you are confident you have intl installed.
-if (!extension_loaded('intl')) {
-    trigger_error('You must enable the intl extension to use CakePHP.', E_USER_ERROR);
-}
 
 use Cake\Cache\Cache;
 use Cake\Console\ConsoleErrorHandler;
@@ -66,7 +76,7 @@ try {
     Configure::config('default', new PhpConfig());
     Configure::load('app', 'default', false);
 } catch (\Exception $e) {
-    die($e->getMessage() . "\n");
+    exit($e->getMessage() . "\n");
 }
 
 // Load an environment local configuration file.
@@ -86,7 +96,7 @@ if (!Configure::read('debug')) {
  * Set server timezone to UTC. You can change it to another timezone of your
  * choice but using UTC makes time calculations / conversions easier.
  */
-date_default_timezone_set('Europe/Zurich');
+date_default_timezone_set('UTC');
 
 /**
  * Configure the mbstring extension to use the correct encoding.
@@ -97,7 +107,7 @@ mb_internal_encoding(Configure::read('App.encoding'));
  * Set the default locale. This controls how dates, number and currency is
  * formatted and sets the default language to use for translations.
  */
-ini_set('intl.default_locale', 'fr_FR');
+ini_set('intl.default_locale', Configure::read('App.defaultLocale'));
 
 /**
  * Register application error and exception handlers.
@@ -145,7 +155,7 @@ Security::salt(Configure::consume('Security.salt'));
  * If you are migrating from 2.x uncomment this code to
  * use a more compatible Mcrypt based implementation
  */
-// Security::engine(new \Cake\Utility\Crypto\Mcrypt());
+//Security::engine(new \Cake\Utility\Crypto\Mcrypt());
 
 /**
  * Setup detectors for mobile and tablet.
@@ -195,13 +205,73 @@ DispatcherFactory::add('Asset');
 DispatcherFactory::add('Routing');
 DispatcherFactory::add('ControllerFactory');
 
-/**
- * Enable default locale format parsing.
- * This is needed for matching the auto-localized string output of Time() class when parsing dates.
- */
-Type::build('date')->useLocaleParser();
-Type::build('datetime')->useLocaleParser();
 
-/* STORAGE
- * ******************************* */
-require_once('storage.php');
+/**
+ * Enable immutable time objects in the ORM.
+ *
+ * You can enable default locale format parsing by adding calls
+ * to `useLocaleParser()`. This enables the automatic conversion of
+ * locale specific date formats. For details see
+ * @link http://book.cakephp.org/3.0/en/core-libraries/internationalization-and-localization.html#parsing-localized-datetime-data
+ */
+Type::build('time')
+    ->useLocaleParser();
+Type::build('date')
+    ->useLocaleParser();
+Type::build('datetime')
+    ->useLocaleParser();
+
+/* APP SETTINGS
+************************************/
+Configure::write('I18n.languages', ['fr_CH', 'en_GB', 'de_CH']);
+
+// https://github.com/ADmad/cakephp-i18n
+Plugin::load('ADmad/I18n');
+
+// friends of cake
+Plugin::load('Search');
+Plugin::load('Crud');
+
+// cake DC
+Configure::write('Users.config', ['users']);
+Plugin::load('CakeDC/Users', ['routes' => true, 'bootstrap' => true]);
+
+// Queue
+//Configure::load('app_queue');
+//Plugin::load('Queue', ['routes' => true]);
+
+// 3xw
+Plugin::load('Attachment', ['bootstrap' => true, 'routes' => true]);
+
+// Cache responses
+/*
+DispatcherFactory::add('HttpCache', [
+  'cache' => 'html',
+  'when' => function ($request, $response){
+
+    if (!empty($request->params['prefix'])){
+      return false;
+    }
+
+    if(!$request->is('get')){
+      return false;
+    }
+
+    return in_array($request->params['controller'], ['Pois']);
+  }
+]);
+
+DispatcherFactory::add('HttpClearCache', [
+  'cache' => 'html',
+  'when' => function ($request, $response){
+
+    if (empty($request->params['prefix'])){
+      return false;
+    }
+    if($request->is('get')){
+      return false;
+    }
+    return true;
+  }
+]);
+*/

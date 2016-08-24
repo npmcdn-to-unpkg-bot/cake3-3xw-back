@@ -19,60 +19,63 @@ $fields = collection($fields)
   return $schema->columnType($field) !== 'binary';
 });
 %>
-<section class="panel">
-  <header class="panel-heading">
-    <?= __('<%= Inflector::humanize($action) %> <%= $singularHumanName %>') ?>
-  </header>
-  <div class="panel-body">
-    <div class="position-center">
-      <?= $this->Form->create($<%= $singularVar %>); ?>
-      <?php
-      <%
-      foreach ($fields as $field) {
-        if (in_array($field, $primaryKey)) {
-          continue;
+<div class="col-md-12">
+  <?= $this->Form->create($<%= $singularVar %>); ?>
+  <section class="panel panel-default">
+    <header class="panel-heading">
+      <h3><?= __('<%= Inflector::humanize($action) %> <%= $singularHumanName %>') ?></h3>
+    </header>
+    <div class="panel-body">
+      <div class="position-center">
+        <?php
+        <%
+        foreach ($fields as $field) {
+          if (in_array($field, $primaryKey)) {
+            continue;
+          }
+          if (isset($keyFields[$field])) {
+            $fieldData = $schema->column($field);
+            if (!empty($fieldData['null'])) {
+              %>
+              echo $this->Form->input('<%= $field %>', ['options' => $<%= $keyFields[$field] %>, 'empty' => true]);
+              <%
+            } else {
+              %>
+              echo $this->Form->input('<%= $field %>', ['options' => $<%= $keyFields[$field] %>, 'class' => 'form-control']);
+              <%
+            }
+            continue;
+          }
+          if (!in_array($field, ['created', 'modified', 'updated'])) {
+            $fieldData = $schema->column($field);
+            if (($fieldData['type'] === 'date') && (!empty($fieldData['null']))) {
+              %>
+              echo $this->Form->input('<%= $field %>', ['empty' => true, 'default' => '', 'class' => 'form-control']);
+              <%
+            }   else {
+              %>
+              echo $this->Form->input('<%= $field %>', ['class' => 'form-control']);
+              <%
+            }
+          }
         }
-        if (isset($keyFields[$field])) {
-          $fieldData = $schema->column($field);
-          if (!empty($fieldData['null'])) {
+        if (!empty($associations['BelongsToMany'])) {
+          foreach ($associations['BelongsToMany'] as $assocName => $assocData) {
             %>
-            echo $this->Form->input('<%= $field %>', ['options' => $<%= $keyFields[$field] %>, 'empty' => true]);
-            <%
-          } else {
-            %>
-            echo $this->Form->input('<%= $field %>', ['options' => $<%= $keyFields[$field] %>, 'class' => 'form-control']);
+            echo $this->Form->input('<%= $assocData['property'] %>._ids', ['options' => $<%= $assocData['variable'] %>, 'class' => 'form-control']);
             <%
           }
-          continue;
         }
-        if (!in_array($field, ['created', 'modified', 'updated'])) {
-          $fieldData = $schema->column($field);
-          if (($fieldData['type'] === 'date') && (!empty($fieldData['null']))) {
-            %>
-            echo $this->Form->input('<%= $field %>', array('empty' => true, 'default' => '', 'class' => 'form-control'));
-            <%
-          }   else {
-            %>
-            echo $this->Form->input('<%= $field %>', array('class' => 'form-control'));
-            <%
-          }
-        }
-      }
-      if (!empty($associations['BelongsToMany'])) {
-        foreach ($associations['BelongsToMany'] as $assocName => $assocData) {
-          %>
-          echo $this->Form->input('<%= $assocData['property'] %>._ids', ['options' => $<%= $assocData['variable'] %>, 'class' => 'form-control']);
-          <%
-        }
-      }
-      %>
-      ?>
-      <hr>
-      <div class="btn-group">
-        <?= $this->Html->link(__('Cancel'), $referer, ['class' => 'btn btn-danger']) ?>
-        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-success']) ?>
+        %>
+        ?>
       </div>
-      <?= $this->Form->end() ?>
     </div>
-  </div>
-</section>
+    <div class="panel-footer">
+      <div class="btn-group">
+        <?= $this->Html->link(__('Cancel'), $referer, ['class' => 'btn btn-sm btn-info']) ?>
+        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-sm btn-success']) ?>
+      </div>
+    </div>
+  </section>
+  <?= $this->Form->end() ?>
+</div>
