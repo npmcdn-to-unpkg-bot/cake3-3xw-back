@@ -34,3 +34,12 @@
 *.mo binary
 *.pdf binary
 *.phar binary
+*.ttf binary
+*.otf binary
+*.woff binary
+*.woff2 binary
+*.svg binary
+*.eot binary
+*.mwb binary
+*.mwb.bak binary
+*.zip binary

@@ -4,13 +4,29 @@
 /logs/*
 /plugins/*
 /tmp/*
-/vendor/*
 /webroot/files/*
 /webroot/imagecache/*
 
-# GRUNT NPM #
+# User specific & automatically generated files #
+#################################################
+/build
+/dist
+/tags
+/composer.lock
+/phpunit.xml
+/phpcs.xml
+/vendor
+*.mo
+
+#   NPM     #
 #############
-/theme/node_modules/*
+/node_modules
+/bower_components
+
+# IDE and editor specific files #
+#################################
+/nbproject
+.idea
 
 # OS generated files #
 ######################
@@ -22,5 +38,3 @@
 Icon?
 ehthumbs.db
 Thumbs.db
-
-src/Template/Bake/Model/table.ctp
