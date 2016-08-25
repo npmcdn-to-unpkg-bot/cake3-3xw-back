@@ -1,7 +1,4 @@
 <footer>
-  <div class="container">
-    <?= $this->Image->image(['image' => 'img/logo.png', 'width' => '250'], ['class' => 'img-rsponsive']) ?>
-  </div>
   <div class="subfooter">
     <div class="container">
       <span class="pull-right">
