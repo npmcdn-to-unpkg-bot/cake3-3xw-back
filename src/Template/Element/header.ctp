@@ -47,25 +47,16 @@
         <div class="clearfix"></div>
         <ul class="nav navbar-nav primary-nav navbar-right">
           <li class="active">
-            <?= $this->Html->link('Aujourd\'hui', '/fr_CH') ?>
+            <?= $this->Html->link('Home Page', '/fr_CH') ?>
           </li>
           <li>
-            <?= $this->Html->link('Expositions', '#') ?>
+            <?= $this->Html->link('Menu 2', '#') ?>
           </li>
           <li>
-            <?= $this->Html->link('Musées', '/fr_CH/musees') ?>
+            <?= $this->Html->link('Menu 3', '#') ?>
           </li>
           <li>
-            <?= $this->Html->link('Agenda', '/fr_CH/agenda') ?>
-          </li>
-          <li>
-            <?= $this->Html->link('Votre visite', '#') ?>
-          </li>
-          <li>
-            <?= $this->Html->link('Parcours', '#') ?>
-          </li>
-          <li>
-            <?= $this->Html->link('Magazine', '#') ?>
+            <?= $this->Html->link('Menu N', '#') ?>
           </li>
         </ul>
       </div>
